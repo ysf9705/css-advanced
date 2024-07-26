@@ -273,23 +273,29 @@ main {
     height: 100%; 
     overflow: auto; 
     background-color: rgba(0,0,0,0.6); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 10% auto; 
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     width: 90%; 
     max-width: 400px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-header {
     margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .modal-header h2 {
@@ -299,9 +305,6 @@ main {
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
     color: #aaa;
     font-size: 24px;
     font-weight: bold;
@@ -315,20 +318,24 @@ main {
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 label {
-    margin-bottom: 5px;
     font-weight: bold;
     color: #555;
 }
 
-input {
-    margin-bottom: 20px;
+input, textarea {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 
 button {
@@ -347,8 +354,8 @@ button:hover {
 }
 
 .modal-footer {
-    text-align: center;
     margin-top: 20px;
+    text-align: center;
 }
 
 .modal-footer p {

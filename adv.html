@@ -18,7 +18,8 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#" id="openModal">Connexion</a></li>
+                <li><a href="#" id="openModalLogin">Connexion</a></li>
+                <li><a href="#" id="openModalContact">Contact</a></li>
             </ul>
         </nav>
         <h2>Bienvenue dans le monde des plantes</h2>
@@ -32,47 +33,82 @@
     </header>
 
     <!-- Modal pour connexion/inscription -->
-    <div id="myModal" class="modal">
+    <div id="myModalLogin" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Connexion / Inscription</h2>
+            <div class="modal-header">
+                <h2>Connexion / Inscription</h2>
+                <span class="close" id="closeModalLogin">&times;</span>
+            </div>
             <form>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                <br><br>
                 <label for="password">Mot de passe:</label>
                 <input type="password" id="password" name="password" required>
-                <br><br>
                 <button type="submit">Se connecter</button>
+            </form>
+            <div class="modal-footer">
                 <p>Pas encore inscrit? <a href="#">Créer un compte</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour contact -->
+    <div id="myModalContact" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Contactez-nous</h2>
+                <span class="close" id="closeModalContact">&times;</span>
+            </div>
+            <form>
+                <label for="contact-email">Votre Email:</label>
+                <input type="email" id="contact-email" name="contact-email" required>
+                <label for="contact-message">Votre Avis:</label>
+                <textarea id="contact-message" name="contact-message" required></textarea>
+                <button type="submit">Envoyer</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Récupération de la modal
-        var modal = document.getElementById("myModal");
+        // Récupération des modals
+        var modalLogin = document.getElementById("myModalLogin");
+        var modalContact = document.getElementById("myModalContact");
 
-        // Récupération du lien qui ouvre la modal
-        var openModal = document.getElementById("openModal");
+        // Récupération des liens qui ouvrent les modals
+        var openModalLogin = document.getElementById("openModalLogin");
+        var openModalContact = document.getElementById("openModalContact");
 
-        // Récupération du bouton de fermeture
-        var closeBtn = document.getElementsByClassName("close")[0];
+        // Récupération des boutons de fermeture
+        var closeModalLogin = document.getElementById("closeModalLogin");
+        var closeModalContact = document.getElementById("closeModalContact");
 
-        // Lorsque l'utilisateur clique sur le lien, ouvrir la modal
-        openModal.onclick = function() {
-            modal.style.display = "block";
+        // Lorsque l'utilisateur clique sur le lien "Connexion", ouvrir la modal de connexion
+        openModalLogin.onclick = function() {
+            modalLogin.style.display = "flex";
         }
 
-        // Lorsque l'utilisateur clique sur le bouton de fermeture, fermer la modal
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
+        // Lorsque l'utilisateur clique sur le lien "Contact", ouvrir la modal de contact
+        openModalContact.onclick = function() {
+            modalContact.style.display = "flex";
         }
 
-        // Lorsque l'utilisateur clique en dehors de la modal, fermer la modal
+        // Lorsque l'utilisateur clique sur le bouton de fermeture de la modal de connexion, fermer la modal
+        closeModalLogin.onclick = function() {
+            modalLogin.style.display = "none";
+        }
+
+        // Lorsque l'utilisateur clique sur le bouton de fermeture de la modal de contact, fermer la modal
+        closeModalContact.onclick = function() {
+            modalContact.style.display = "none";
+        }
+
+        // Lorsque l'utilisateur clique en dehors des modals, fermer les modals
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+            if (event.target == modalContact) {
+                modalContact.style.display = "none";
             }
         }
     </script>
